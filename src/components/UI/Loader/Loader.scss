@@ -1,0 +1,166 @@
+.Loader {
+	position: relative;
+	p {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		font-weight: 500;
+		letter-spacing: 2px;
+		color: #fff;
+		font-size: 14px;
+	}
+}
+
+.loader-container *, .loader-container *:before, .loader-container *:after{
+	box-sizing: border-box;
+		-o-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+}
+
+.loader-container {
+	margin: 0 0 20px;
+	width: 100%;
+	height: 20px;
+  display: flex;
+}
+.loader-container > div {
+	float: left;
+	background: rgb(0, 50, 242);
+	height: 100%;
+	flex: 1;
+	display: inline-block;
+
+	&:first-child {
+		border-radius: 10px 0 0 10px;
+	}
+
+	&:last-child {
+		border-radius: 0 10px 10px 0;
+	}
+}
+
+.loader-container .loader-shaft1 {
+	animation-delay: 0.0225s;
+		-o-animation-delay: 0.0225s;
+		-ms-animation-delay: 0.0225s;
+		-webkit-animation-delay: 0.0225s;
+		-moz-animation-delay: 0.0225s;
+}
+.loader-container .loader-shaft2 {
+	animation-delay: 0.055s;
+		-o-animation-delay: 0.055s;
+		-ms-animation-delay: 0.055s;
+		-webkit-animation-delay: 0.055s;
+		-moz-animation-delay: 0.055s;
+}
+.loader-container .loader-shaft3 {
+	animation-delay: 0.0775s;
+		-o-animation-delay: 0.0775s;
+		-ms-animation-delay: 0.0775s;
+		-webkit-animation-delay: 0.0775s;
+		-moz-animation-delay: 0.0775s;
+}
+.loader-container .loader-shaft4 {
+	animation-delay: 0.11s;
+		-o-animation-delay: 0.11s;
+		-ms-animation-delay: 0.11s;
+		-webkit-animation-delay: 0.11s;
+		-moz-animation-delay: 0.11s;
+}
+.loader-container .loader-shaft5 {
+	animation-delay: 0.1325s;
+		-o-animation-delay: 0.1325s;
+		-ms-animation-delay: 0.1325s;
+		-webkit-animation-delay: 0.1325s;
+		-moz-animation-delay: 0.1325s;
+}
+.loader-container .loader-shaft6 {
+	animation-delay: 0.165s;
+		-o-animation-delay: 0.165s;
+		-ms-animation-delay: 0.165s;
+		-webkit-animation-delay: 0.165s;
+		-moz-animation-delay: 0.165s;
+}
+.loader-container .loader-shaft7 {
+	animation-delay: 0.1875s;
+		-o-animation-delay: 0.1875s;
+		-ms-animation-delay: 0.1875s;
+		-webkit-animation-delay: 0.1875s;
+		-moz-animation-delay: 0.1875s;
+}
+.loader-container .loader-shaft8 {
+	animation-delay: 0.22s;
+		-o-animation-delay: 0.22s;
+		-ms-animation-delay: 0.22s;
+		-webkit-animation-delay: 0.22s;
+		-moz-animation-delay: 0.22s;
+}
+.loader-container .loader-shaft9 {
+	animation-delay: 0.2425s;
+		-o-animation-delay: 0.2425s;
+		-ms-animation-delay: 0.2425s;
+		-webkit-animation-delay: 0.2425s;
+		-moz-animation-delay: 0.2425s;
+}
+.loader-container .loader-shaft10 {
+	animation-delay: 0.275s;
+		-o-animation-delay: 0.275s;
+		-ms-animation-delay: 0.275s;
+		-webkit-animation-delay: 0.275s;
+		-moz-animation-delay: 0.275s;
+}
+
+.loader-container > div {
+	height: 20px;
+	animation: loader-wave 0.55s infinite ease-in-out;
+		-o-animation: loader-wave 0.55s infinite ease-in-out;
+		-ms-animation: loader-wave 0.55s infinite ease-in-out;
+		-webkit-animation: loader-wave 0.55s infinite ease-in-out;
+		-moz-animation: loader-wave 0.55s infinite ease-in-out;
+	transform: translateY"("-59px")";
+		-o-transform: translateY"("-59px")";
+		-ms-transform: translateY"("-59px")";
+		-webkit-transform: translateY"("-59px")";
+		-moz-transform: translateY"("-59px")";
+}
+
+
+
+@keyframes loader-wave {
+	50% {
+		background: rgb(0, 81, 255);
+		transform: translateY"("59px")";
+	}
+}
+
+@-o-keyframes loader-wave {
+	50% {
+		background: rgb(0, 81, 255);
+		-o-transform: translateY"("59px")";
+	}
+}
+
+@-ms-keyframes loader-wave {
+	50% {
+		background: rgb(0, 81, 255);
+		-ms-transform: translateY"("59px")";
+	}
+}
+
+@-webkit-keyframes loader-wave {
+	50% {
+		background: rgb(0, 81, 255);
+		-webkit-transform: translateY"("59px")";
+	}
+}
+
+@-moz-keyframes loader-wave {
+	50% {
+		background: rgb(0, 81, 255);
+		-moz-transform: translateY"("59px")";
+	}
+}

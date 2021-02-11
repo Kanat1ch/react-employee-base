@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: rgb(45, 98, 179);
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    h1 {
+      color: #fff;
+    }
+  }
+
+  &__navlink {  
+    display: flex;
+    height: 100%;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 22px;
+      height: 100%;
+      padding: 0 20px;
+      transition: all .3s ease-in-out;
+      font-weight: 500;
+
+      &:hover {
+        background: #fff;
+        color: #666;
+      }
+
+      &.active {
+        background: #fff;
+        color: #000;
+      }
+    }
+  }
+}
+
+.main {
+  margin-top: 50px;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    width: fit-content;
+    font-weight: 500;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 0;
+      left: 10px;
+      width: 110%;
+      height: 4px;
+      background: linear-gradient(to left, transparent 0%, rgb(45, 98, 179) 45%);
+      animation: line .5s ease-out;
+    }
+  }
+}
+
+@keyframes line {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    width: 720px;
+  }
+
+  .header {
+    &__logo {
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    &__navlink {
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 540px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
