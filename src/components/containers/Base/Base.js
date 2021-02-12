@@ -1,36 +1,136 @@
 import React, { Component } from 'react'
 import Persons from './Persons/Persons'
 import {NavLink} from 'react-router-dom'
+import calcYears from './functions/calcYears/calcYears'
+import axios from 'axios'
 import './Base.scss'
 
 class Base extends Component {
 
     state = {
-        filter: 'id_as',
+        persons: [],
+        load: true,
+        empty: false,
+        modal: {
+            show: false,
+            status: '',
+            message: ''
+        },
         term: ''
     }
 
     onUpdateSearch = e => {
-        const term = e.target.value
-        this.setState({ term })
+        this.setState({ term: e.target.value })
+    }
+
+    searchingFor = term => {
+        return this.state.persons.filter((person) => {
+            const fullName = `${person.name} ${person.surname}`.toLowerCase()
+            return(
+                fullName.indexOf(term.toLowerCase()) !== -1
+            )
+        })
     }
 
     onUpdateFilter = e => {
+        const sorting = this.state.persons;
+
         switch(e.target.value) {
             case 'id_as':
-                this.setState({filter: 'id_as'})
+                sorting.sort(function (a,b) {
+                    return a.num - b.num
+                });
+                this.setState({persons: sorting})
                 break
             case 'id_des':
-                this.setState({filter: 'id_des'})
+                sorting.sort(function (a,b) {
+                    return a.num - b.num
+                });
+                sorting.reverse()
+                this.setState({persons: sorting})
                 break
             case 'age_as':
-                this.setState({filter: 'age_as'})
+                sorting.sort(function (a,b) {
+                    return calcYears(a.born) - calcYears(b.born)
+                });
+                this.setState({persons: sorting})
                 break
             case 'age_des':
-                this.setState({filter: 'age_des'})
+                sorting.sort(function (a,b) {
+                    return calcYears(a.born) - calcYears(b.born)
+                });
+                sorting.reverse()
+                this.setState({persons: sorting})
                 break
         }
     }
+
+    deletePerson = async id => {
+        try {
+          await axios.delete(`https://sharonov-base-default-rtdb.firebaseio.com/persons/${id}.json`)
+    
+          this.setState({
+            modal: {
+              show: true,
+              status: 'success',
+              message: 'Person was successfully deleted'
+              }
+            })
+            setTimeout(() => {
+              this.setState(prevState => ({
+                modal: {...prevState.modal, show: false}
+              }))
+            }, 3000)
+        } catch(e) {
+          console.log(e)
+          this.setState({
+            modal: {
+              show: true,
+              status: 'error',
+              message: 'Something went wrong'
+              }
+            })
+            setTimeout(() => {
+              this.setState(prevState => ({
+                modal: {...prevState.modal, show: false}
+              }))
+            }, 3000)
+        }
+    
+        const persons = this.state.persons.filter(item => (item.id !== id))
+        this.setState({
+          persons
+        })
+      }
+
+    async componentDidMount() {
+        try {
+          const response = await axios.get('https://sharonov-base-default-rtdb.firebaseio.com/persons.json')
+          const persons = Object.entries(response.data).map(person => {
+            return {
+              id: person[0],
+              num: person[1].num,
+              name: person[1].name,
+              surname: person[1].surname,
+              patronymic: person[1].patronymic,
+              born: person[1].born,
+              phone: person[1].phone,
+              email: person[1].email,
+              departament: person[1].departament
+            }
+          })
+          this.setState({
+            persons,
+            load: false
+          })
+        } catch(e) {
+          console.log(e)
+          this.setState({
+            load: false,
+            empty: true
+          })
+        }
+      }
 
     render() {
         return(
@@ -59,8 +159,11 @@ class Base extends Component {
                 </form>
                 
                 <Persons
-                    filter={this.state.filter}
-                    term={this.state.term}
+                    persons={this.searchingFor(this.state.term)}
+                    load={this.state.load}
+                    empty={this.state.empty}
+                    modal={this.state.modal}
+                    onDelete={this.deletePerson}
                 />
             </div>
         )

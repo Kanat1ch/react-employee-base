@@ -1,8 +1,9 @@
 import React from 'react'
+import './Info.scss'
 
 const Info = () => {
     return(
-        <div className="info">
+        <div className="Info">
             <div className="title">
                 <h1>Information</h1>
             </div>

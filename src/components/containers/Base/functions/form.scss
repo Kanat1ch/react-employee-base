@@ -82,3 +82,37 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .Add, .Edit {
+    .title {
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    form {
+      margin-bottom: 30px;
+
+      p {
+        margin-left: 0;
+      }
+
+      .form-group {
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-bottom: 0;
+
+        &__item {
+          width: 100%;
+          flex: auto;
+          margin: 10px 0;
+        }
+      }
+
+      button {
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+}
+

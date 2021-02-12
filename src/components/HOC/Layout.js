@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import Hamburger from '../UI/Hamburger/Hamburger'
 
 const Layout = props => {
     return(
@@ -15,6 +16,13 @@ const Layout = props => {
                         </NavLink>
                         <NavLink to="/info">
                             Information
+                        </NavLink>
+
+                        <NavLink to="/" exact className="mobile">
+                            <i className="fa fa-database"></i>
+                        </NavLink>
+                        <NavLink to="/info" className="mobile">
+                            <i className="fa fa-info"></i>
                         </NavLink>
                     </div>
                 </div>

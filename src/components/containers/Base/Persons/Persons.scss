@@ -65,9 +65,15 @@
       display: none;
     }
     .table-row {
+      padding: 25px 20px;
+
       button {
         margin-left: 0;
         margin-right: 15px;
+      }
+
+      i.fa {
+        font-size: 20px !important;
       }
     }
     li {
@@ -82,14 +88,18 @@
       &:before {
         color: #6C7A89;
         padding-right: 10px;
-        content: attr(data-label);
-        flex-basis: 50%;
-        text-align: right;
+        content: attr(data-label) ':';
+        text-align: left;
       }
     }
 
     .col-5 {
       justify-content: flex-start;
+
+      a, button {
+        margin-right: 15px;
+        margin-left: 5px;
+      }
     }
   }
 }

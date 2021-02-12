@@ -1,49 +1,50 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import calcYears from '../functions/calcYears/calcYears'
 
 const Person = ({id, num, name, surname, born, departament, onDelete}) => {
 
-  const calcYears = () => {
-    let yearsOld = null
+  // const calcYears = () => {
+  //   let yearsOld = null
 
-    const date = new Date
-    const currentDate = {
-      day: date.getDate(),
-      month: date.getMonth(),
-      year: date.getFullYear()
-    }
+  //   const date = new Date
+  //   const currentDate = {
+  //     day: date.getDate(),
+  //     month: date.getMonth(),
+  //     year: date.getFullYear()
+  //   }
     
-    const birthday = new Date(born)
-    const birthdayDate = {
-      day: birthday.getDate(),
-      month: birthday.getMonth(),
-      year: birthday.getFullYear()
-    }
+  //   const birthday = new Date(born)
+  //   const birthdayDate = {
+  //     day: birthday.getDate(),
+  //     month: birthday.getMonth(),
+  //     year: birthday.getFullYear()
+  //   }
 
-    const yearsDif = currentDate.year - birthdayDate.year
+  //   const yearsDif = currentDate.year - birthdayDate.year
 
-    if (currentDate.month < birthdayDate.month) {
-      yearsOld = yearsDif - 1
-    } else if (currentDate.month > birthdayDate.month) {
-      yearsOld = yearsDif
-    } else {
-      if (currentDate.day < birthdayDate.day) {
-        yearsOld = yearsDif - 1
-      } else {
-        yearsOld = yearsDif
-      }
-    }
+  //   if (currentDate.month < birthdayDate.month) {
+  //     yearsOld = yearsDif - 1
+  //   } else if (currentDate.month > birthdayDate.month) {
+  //     yearsOld = yearsDif
+  //   } else {
+  //     if (currentDate.day < birthdayDate.day) {
+  //       yearsOld = yearsDif - 1
+  //     } else {
+  //       yearsOld = yearsDif
+  //     }
+  //   }
 
-    return yearsOld
-  }
+  //   return yearsOld
+  // }
 
-  calcYears()
+  // calcYears()
 
   return(
     <li className="table-row">
       <div className="col col-1" data-label="ID">{num}</div>
       <div className="col col-2" data-label="Name">{`${name} ${surname}`}</div>
-      <div className="col col-3" data-label="Age">{calcYears()}</div>
+      <div className="col col-3" data-label="Age">{calcYears(born)}</div>
       <div className="col col-4" data-label="Departament">{departament}</div>
       <div className="col col-5" data-label="Actions">
         <NavLink

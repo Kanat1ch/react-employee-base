@@ -57,6 +57,11 @@
         background: #fff;
         color: #000;
       }
+
+      &.mobile {
+        width: 60px;
+        display: none;
+      }
     }
   }
 }
@@ -111,6 +116,10 @@
     width: 720px;
   }
 
+  .header .container {
+    padding-right: 0;
+  }
+
   .header {
     &__logo {
       h1 {
@@ -129,6 +138,24 @@
 @media screen and (max-width: 768px) {
   .container {
     width: 540px;
+  }
+
+  .header {
+    &__logo {
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    &__navlink {
+      a {
+        display: none;
+
+        &.mobile {
+          display: flex;
+        }
+      }
+    }
   }
 }
 
