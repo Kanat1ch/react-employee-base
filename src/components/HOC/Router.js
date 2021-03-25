@@ -1,11 +1,8 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import Base from '../containers/Base/Base'
-import Info from '../containers/Info/Info'
-import Add from '../containers/Base/functions/Add/Add'
-// import Edit from '../containers/Base/functions/Edit/Edit'
-import Form from '../containers/Base/functions/Form/Form'
-
+import Base from '../pages/Base/Base'
+import Info from '../pages/Info/Info'
+import Editor from '../pages/Editor/Editor'
 
 const Router = () => {
     return(
@@ -17,10 +14,10 @@ const Router = () => {
                 <Info />
             </Route>
             <Route path='/add'>
-                <Form type="add"/>
+                <Editor type="add"/>
             </Route>
             <Route path='/edit/:id'>
-                <Form type="edit"/>
+                <Editor type="edit"/>
             </Route>
         </Switch>
     )

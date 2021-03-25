@@ -16,6 +16,9 @@ const calcYears = (born) => {
   }
 
   const yearsDif = currentDate.year - birthdayDate.year
+  if (yearsDif <= 1) {
+    return 0
+  }
 
   if (currentDate.month < birthdayDate.month) {
     yearsOld = yearsDif - 1

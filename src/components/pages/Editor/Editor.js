@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import InputMask from 'react-input-mask'
-import Loader from '../../../../UI/Loader/Loader'
-import Modal from '../../../../UI/Modal/Modal'
+import Loader from '../../UI/Loader/Loader'
 import is from 'is_js'
 import {withRouter} from 'react-router-dom'
-import '../form.scss'
+import Notification from '../../UI/Notification/Notification'
+import './Editor.scss'
 
 class Form extends Component {
 
   state = {
     isValid: false,
     load: true,
-    modal: {
-      show: false,
-      status: '',
-      message: ''
-    },
     data: {
       num: 1,
       name: '',
@@ -131,32 +126,10 @@ class Form extends Component {
           await axios.put(`https://sharonov-base-default-rtdb.firebaseio.com/persons/${id}.json`, {
             num, name, surname, patronymic, born, phone, email, departament
           })
-          this.setState({
-            modal: {
-              show: true,
-              status: 'success',
-              message: 'Person was successfully changed'
-            }
-          })
-          setTimeout(() => {
-            this.setState(prevState => ({
-              modal: {...prevState.modal, show: false}
-            }))
-          }, 3000)
+          Notification('success', 'Person was successfully edited')
         } catch(e) {
           console.log(e)
-          this.setState({
-            modal: {
-              show: true,
-              status: 'error',
-              message: 'Something went wrong'
-            }
-          })
-          setTimeout(() => {
-            this.setState(prevState => ({
-              modal: {...prevState.modal, show: false}
-            }))
-          }, 3000)
+          Notification('error', 'Something went wrong...')
         }
       }
     } else {
@@ -173,33 +146,12 @@ class Form extends Component {
               email: '',
               born: '',
               departament: 'IT'
-            },
-            modal: {
-              show: true,
-              status: 'success',
-              message: 'Person was successfully added'
             }
           }))
-  
-          setTimeout(() => {
-            this.setState(prevState => ({
-              modal: {...prevState.modal, show: false}
-            }))
-          }, 3000)
+          Notification('success', 'Person was successfully added')
         } catch(e) {
           console.log(e)
-          this.setState({
-            modal: {
-              show: true,
-              status: 'error',
-              message: 'Something went wrong'
-            }
-          })
-          setTimeout(() => {
-            this.setState(prevState => ({
-              modal: {...prevState.modal, show: false}
-            }))
-          }, 3000)
+          Notification('error', 'Something went wrong...')
         }
       }
     }
@@ -267,7 +219,7 @@ class Form extends Component {
               </div>
               <div className="form-group__item">
                 <label htmlFor="born">Born *</label>
-                <input type="date" id="born" value={born} onChange={this.changeBorn} />
+                <input type="date" id="born" value={born} min="1900-01-01" max="2010-12-31" onChange={this.changeBorn} />
               </div>
               <div className="form-group__item">
                 <label htmlFor="departament">Departament *</label>
@@ -288,11 +240,6 @@ class Form extends Component {
             {type === 'edit' ? <button type="button" className="delete" onClick={this.deletePerson}>Delete</button> : null}   
           </form>
         }
-        <Modal
-          show={this.state.modal.show}
-          status={this.state.modal.status}
-          message={this.state.modal.message}
-        />
       </div>
     )
   }

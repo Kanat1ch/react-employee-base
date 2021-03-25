@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import calcYears from '../functions/calcYears/calcYears'
+import calcYears from '../../../functions/calcYears/calcYears'
 
 const Person = ({id, num, name, surname, born, departament, onDelete}) => {
   return(

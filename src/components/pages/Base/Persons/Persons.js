@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Person from './Person'
 import Loader from '../../../UI/Loader/Loader'
-import Modal from '../../../UI/Modal/Modal'
+
 import './Persons.scss'
 
-const Persons = ({persons, load, onDelete, modal}) => {
+const Persons = ({persons, load, onDelete}) => {
   return(
     <ul className="responsive-table">        
       <li className="table-header">
@@ -35,11 +35,6 @@ const Persons = ({persons, load, onDelete, modal}) => {
       }
 
       {persons.length === 0 && !load ? <div className="table-row" style={{padding: '25px', textAlign: 'center'}}><p style={{fontWeight: '500'}}>NO DATA</p></div> : null}
-      <Modal
-        show={modal.show}
-        status={modal.status}
-        message={modal.message}
-      />
     </ul>
   )
 }

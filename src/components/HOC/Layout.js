@@ -1,8 +1,10 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import Hamburger from '../UI/Hamburger/Hamburger'
 
-const Layout = props => {
+const MAIN_PAGE = '/'
+const INFO_PAGE = '/info'
+
+const Layout = ({ children }) => {
     return(
         <div className="App">
             <div className="header">
@@ -11,17 +13,17 @@ const Layout = props => {
                         <h1>SharonovBase</h1>
                     </div>
                     <div className="header__navlink">
-                        <NavLink to="/" exact>
+                        <NavLink to={MAIN_PAGE} exact>
                             Database
                         </NavLink>
-                        <NavLink to="/info">
+                        <NavLink to={INFO_PAGE}>
                             Information
                         </NavLink>
 
-                        <NavLink to="/" exact className="mobile">
+                        <NavLink to={MAIN_PAGE} exact className="mobile">
                             <i className="fa fa-database"></i>
                         </NavLink>
-                        <NavLink to="/info" className="mobile">
+                        <NavLink to={INFO_PAGE} className="mobile">
                             <i className="fa fa-info"></i>
                         </NavLink>
                     </div>
@@ -30,7 +32,7 @@ const Layout = props => {
         
             <div className="main">
                 <div className="container">
-                    {props.children}
+                    {children}
                 </div>         
             </div>
         </div>
